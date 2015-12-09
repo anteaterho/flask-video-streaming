@@ -2,8 +2,8 @@
 from flask import Flask, render_template, Response
 
 # emulated camera
-from camera import Camera
-
+#from camera import Camera
+from camera2 import VideoCamera
 # Raspberry Pi camera module (requires picamera package)
 # from camera_pi import Camera
 
@@ -27,7 +27,7 @@ def gen(camera):
 @app.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
+    return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
